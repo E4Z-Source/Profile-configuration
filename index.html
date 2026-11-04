@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Mini-Games Arcade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Authentication Modal / Overlay -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <h2>Welcome to 100 Mini-Games!</h2>
+            <p>Sign up or log in to access the arcade.</p>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <button type="submit" class="btn">Start Playing</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Game Dashboard (Hidden until login) -->
+    <div id="game-dashboard" class="dashboard hidden">
+        <header>
+            <h1>🎮 100 Mini-Games Arcade</h1>
+            <span id="user-display"></span>
+        </header>
+        
+        <main>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search mini-games (1-100)...">
+            </div>
+            
+            <div class="games-grid" id="games-grid">
+                <!-- Dynamically generated game cards will appear here -->
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
