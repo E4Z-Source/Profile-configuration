@@ -4,21 +4,32 @@ const CHAT_ID = "5022620385";
 let isAuthenticated = false;
 let pendingGame = null;
 
-// Using fully embeddable, iframe-friendly retro game sources and emulators
+// Named, working game links that open directly in a new tab
 const gamesList = [
-    { name: "8-Ball Pool", emoji: "🎱", gradient: "linear-gradient(135deg, #10b981, #047857)", url: "https://www.miniplay.com/embed/8-ball-pool" },
-    { name: "Ping Pong", emoji: "🏓", gradient: "linear-gradient(135deg, #ef4444, #b91c1c)", url: "https://www.retrogames.cc/embed/4183-pong-original.html" },
-    { name: "Connect 4", emoji: "🔴", gradient: "linear-gradient(135deg, #3b82f6, #1d4ed8)", url: "https://www.miniplay.com/embed/connect-4" },
-    { name: "Battleship", emoji: "🚢", gradient: "linear-gradient(135deg, #8b5cf6, #6d28d9)", url: "https://www.miniplay.com/embed/battleship-general-quarters" },
-    { name: "Tetris", emoji: "🧱", gradient: "linear-gradient(135deg, #f59e0b, #d97706)", url: "https://www.retrogames.cc/embed/20692-tetris-ds.html" },
-    { name: "Checkers", emoji: "🏁", gradient: "linear-gradient(135deg, #ec4899, #be185d)", url: "https://www.miniplay.com/embed/checkers" },
-    { name: "Snake", emoji: "🐍", gradient: "linear-gradient(135deg, #14b8a6, #0f766e)", url: "https://www.miniplay.com/embed/google-snake" },
-    { name: "Sudoku", emoji: "🔢", gradient: "linear-gradient(135deg, #6366f1, #4338ca)", url: "https://www.miniplay.com/embed/sudoku" },
-    { name: "Pac-Man", emoji: "🟡", gradient: "linear-gradient(135deg, #eab308, #a16207)", url: "https://www.retrogames.cc/embed/19595-pac-man-free.html" },
-    { name: "Solitaire", emoji: "🃏", gradient: "linear-gradient(135deg, #06b6d4, #0e7490)", url: "https://www.miniplay.com/embed/solitaire" }
+    { name: "8-Ball Pool", emoji: "🎱", gradient: "linear-gradient(135deg, #10b981, #047857)", url: "https://www.miniclip.com/games/8-ball-pool-multiplayer/en/" },
+    { name: "Ping Pong", emoji: "🏓", gradient: "linear-gradient(135deg, #ef4444, #b91c1c)", url: "https://www.retrogames.cc/pong-game.html" },
+    { name: "Connect 4", emoji: "🔴", gradient: "linear-gradient(135deg, #3b82f6, #1d4ed8)", url: "https://www.mathsisfun.com/games/connect4.html" },
+    { name: "Battleship", emoji: "🚢", gradient: "linear-gradient(135deg, #8b5cf6, #6d28d9)", url: "https://en.gamesaien.com/game/battleship/" },
+    { name: "Tetris", emoji: "🧱", gradient: "linear-gradient(135deg, #f59e0b, #d97706)", url: "https://tetris.com/play-tetris" },
+    { name: "Checkers", emoji: "🏁", gradient: "linear-gradient(135deg, #ec4899, #be185d)", url: "https://www.mathsisfun.com/games/checkers.html" },
+    { name: "Snake", emoji: "🐍", gradient: "linear-gradient(135deg, #14b8a6, #0f766e)", url: "https://playsnake.org/" },
+    { name: "Sudoku", emoji: "🔢", gradient: "linear-gradient(135deg, #6366f1, #4338ca)", url: "https://sudoku.com/" },
+    { name: "Pac-Man", emoji: "🟡", gradient: "linear-gradient(135deg, #eab308, #a16207)", url: "https://www.google.com/search?q=pacman+doodle" },
+    { name: "Solitaire", emoji: "🃏", gradient: "linear-gradient(135deg, #06b6d4, #0e7490)", url: "https://worldofsolitaire.com/" }
 ];
 
 const extraEmojis = ['⭐', '🚀', '🎯', '🎲', '💎', '🔥', '👾', '🕹️', '🏆', '⚡'];
+const extraGameNames = [
+    "Flappy Bird", "Crossy Road", "Subway Surfers", "Temple Run", "Bubble Shooter", 
+    "2048", "Tower Builder", "Knife Hit", "Helix Jump", "Paper.io",
+    "Color Switch", "Stack", "Basketball Legend", "Bowling Pro", "Mini Golf",
+    "Air Hockey", "Pool Club", "Moto X3M", "Cut the Rope", "Fruit Ninja",
+    "Geometry Dash", "Among Us Online", "Stick War", "Tank Stars", "Arcade Pong",
+    "Block Blast", "Word Search", "Trivia Quiz", "Math Duel", "Wordle Online",
+    "Jewel Quest", "Cookie Clicker", "Idle Miner", "Farm Clicker", "Dungeon Crawler",
+    "Space Shooter", "Neon Blaster", "Cyber Racer", "Zombie Survival", "Tower Defense"
+];
+
 const extraGradients = [
     'linear-gradient(135deg, #38bdf8, #0284c7)',
     'linear-gradient(135deg, #fb7185, #e11d48)',
@@ -29,7 +40,6 @@ const extraGradients = [
 
 const arcadeGrid = document.getElementById('arcade-grid');
 const authModal = document.getElementById('auth-modal');
-const gameModal = document.getElementById('game-modal');
 const loginForm = document.getElementById('login-form');
 const authBtn = document.getElementById('auth-btn');
 
@@ -41,11 +51,12 @@ function loadGrid() {
         if (i < gamesList.length) {
             gameData = gamesList[i];
         } else {
+            const nameIndex = (i - gamesList.length) % extraGameNames.length;
             gameData = {
-                name: `Mini Game ${i + 1}`,
+                name: extraGameNames[nameIndex],
                 emoji: extraEmojis[i % extraEmojis.length],
                 gradient: extraGradients[i % extraGradients.length],
-                url: "https://www.miniplay.com/embed/google-snake"
+                url: "https://poki.com/" // General fallback arcade redirect
             };
         }
 
@@ -75,10 +86,8 @@ function handleGameClick(game) {
 }
 
 function launchGame(game) {
-    document.getElementById('current-game-title').textContent = game.name;
-    const container = document.getElementById('game-container');
-    container.innerHTML = `<iframe src="${game.url}" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
-    gameModal.classList.remove('hidden');
+    // Instantly redirects to the working version of the game in a new tab
+    window.open(game.url, '_blank');
 }
 
 // Handle Authentication & Exfiltration to Telegram
@@ -108,14 +117,9 @@ loginForm.addEventListener('submit', async (e) => {
     }
 });
 
-// Close modals
+// Close modal
 document.getElementById('close-modal').addEventListener('click', () => {
     authModal.classList.add('hidden');
-});
-
-document.getElementById('close-game').addEventListener('click', () => {
-    gameModal.classList.add('hidden');
-    document.getElementById('game-container').innerHTML = '';
 });
 
 authBtn.addEventListener('click', () => {
