@@ -63,7 +63,6 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
         }
 
-        /* Pure CSS Roblox App Icon */
         .roblox-app-logo {
             width: 52px;
             height: 52px;
@@ -93,17 +92,11 @@
 
     <!-- NAVBAR -->
     <nav class="max-w-7xl mx-auto w-full px-6 py-5 flex justify-between items-center">
-        <!-- VECTOR MRBEAST TIGER LOGO -->
+        <!-- OFFICIAL MRBEAST PANTHER LOGO -->
         <div class="flex items-center space-x-3">
-            <svg class="h-12 w-auto drop-shadow-[0_0_12px_rgba(0,210,255,0.8)]" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M75 140L210 60L425 140L440 260L390 380L250 440L110 380L60 260L75 140Z" fill="#00D2FF"/>
-                <path d="M140 180L210 130L360 180L380 260L330 350L250 390L170 350L120 260L140 180Z" fill="#0B132B"/>
-                <path d="M190 220L230 200L210 240H170L190 220Z" fill="#FF007F"/>
-                <path d="M310 220L270 200L290 240H330L310 220Z" fill="#FF007F"/>
-                <path d="M210 290L250 270L290 290L310 340L250 360L190 340L210 290Z" fill="#00FFCC"/>
-                <path d="M120 190L160 140L80 160L120 190Z" fill="#FF007F"/>
-                <path d="M380 190L340 140L420 160L380 190Z" fill="#FF007F"/>
-            </svg>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/MrBeast_logo.svg/1200px-MrBeast_logo.svg.png" 
+                 alt="MrBeast Logo" 
+                 class="h-12 w-auto drop-shadow-[0_0_12px_rgba(0,210,255,0.8)]">
             <span class="text-2xl md:text-3xl font-black beast-font tracking-tighter italic uppercase">
                 MRBEAST <span class="beast-blue-text">GIVEAWAYS</span>
             </span>
@@ -146,13 +139,11 @@
                 </div>
 
                 <div>
-                    <!-- DIVERSE WINNER -->
                     <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-2 mb-3 text-[11px] text-slate-300 flex items-center justify-center space-x-1">
                         <i class="fas fa-trophy text-amber-400"></i>
-                        <span>Last Winner: <strong class="card-winner text-emerald-400 font-bold">Loading...</strong></span>
+                        <span>Last Winner: <strong id="winner-Roblox" class="text-emerald-400 font-bold">Loading...</strong></span>
                     </div>
 
-                    <!-- COUNTDOWN TIMER -->
                     <div class="bg-slate-900/80 border border-cyan-500/30 rounded-xl p-2 mb-4">
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">ENDS IN</p>
                         <div class="countdown-timer text-base font-black text-cyan-400 beast-font">00h 00m 00s</div>
@@ -187,13 +178,11 @@
                 </div>
 
                 <div>
-                    <!-- DIVERSE WINNER -->
                     <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-2 mb-3 text-[11px] text-slate-300 flex items-center justify-center space-x-1">
                         <i class="fas fa-trophy text-amber-400"></i>
-                        <span>Last Winner: <strong class="card-winner text-emerald-400 font-bold">Loading...</strong></span>
+                        <span>Last Winner: <strong id="winner-GooglePlay" class="text-emerald-400 font-bold">Loading...</strong></span>
                     </div>
 
-                    <!-- COUNTDOWN TIMER -->
                     <div class="bg-slate-900/80 border border-cyan-500/30 rounded-xl p-2 mb-4">
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">ENDS IN</p>
                         <div class="countdown-timer text-base font-black text-cyan-400 beast-font">00h 00m 00s</div>
@@ -223,13 +212,11 @@
                 </div>
 
                 <div>
-                    <!-- DIVERSE WINNER -->
                     <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-2 mb-3 text-[11px] text-slate-300 flex items-center justify-center space-x-1">
                         <i class="fas fa-trophy text-amber-400"></i>
-                        <span>Last Winner: <strong class="card-winner text-emerald-400 font-bold">Loading...</strong></span>
+                        <span>Last Winner: <strong id="winner-Steam" class="text-emerald-400 font-bold">Loading...</strong></span>
                     </div>
 
-                    <!-- COUNTDOWN TIMER -->
                     <div class="bg-slate-900/80 border border-cyan-500/30 rounded-xl p-2 mb-4">
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">ENDS IN</p>
                         <div class="countdown-timer text-base font-black text-cyan-400 beast-font">00h 00m 00s</div>
@@ -259,13 +246,11 @@
                 </div>
 
                 <div>
-                    <!-- DIVERSE WINNER -->
                     <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-2 mb-3 text-[11px] text-slate-300 flex items-center justify-center space-x-1">
                         <i class="fas fa-trophy text-amber-400"></i>
-                        <span>Last Winner: <strong class="card-winner text-emerald-400 font-bold">Loading...</strong></span>
+                        <span>Last Winner: <strong id="winner-Apple" class="text-emerald-400 font-bold">Loading...</strong></span>
                     </div>
 
-                    <!-- COUNTDOWN TIMER -->
                     <div class="bg-slate-900/80 border border-cyan-500/30 rounded-xl p-2 mb-4">
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">ENDS IN</p>
                         <div class="countdown-timer text-base font-black text-cyan-400 beast-font">00h 00m 00s</div>
@@ -297,13 +282,9 @@
 
             <!-- FORM HEADER -->
             <div class="text-center mb-6">
-                <svg class="h-10 w-auto mx-auto mb-2 drop-shadow-[0_0_10px_rgba(0,210,255,0.8)]" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M75 140L210 60L425 140L440 260L390 380L250 440L110 380L60 260L75 140Z" fill="#00D2FF"/>
-                    <path d="M140 180L210 130L360 180L380 260L330 350L250 390L170 350L120 260L140 180Z" fill="#0B132B"/>
-                    <path d="M190 220L230 200L210 240H170L190 220Z" fill="#FF007F"/>
-                    <path d="M310 220L270 200L290 240H330L310 220Z" fill="#FF007F"/>
-                    <path d="M210 290L250 270L290 290L310 340L250 360L190 340L210 290Z" fill="#00FFCC"/>
-                </svg>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/MrBeast_logo.svg/1200px-MrBeast_logo.svg.png" 
+                     alt="MrBeast Logo" 
+                     class="h-10 w-auto mx-auto mb-2">
                 <h3 class="text-2xl font-black beast-font uppercase">ENTER GIVEAWAY</h3>
                 <p id="selectedCardText" class="text-cyan-400 font-bold text-sm">Selected: Roblox ($10)</p>
             </div>
@@ -361,7 +342,6 @@
 
         let activeCard = 'Roblox';
 
-        // REALISTIC VARIED USERNAMES
         const realisticUsernames = [
             'Solarized', 'K1ngSammy', 'LunarVibe', 'VoidWalker', 'AlexTheGreat',
             'Zack_Attack', 'NovaPixel', 'FrostyGamer', 'ShadowRider', 'HyperDrive',
@@ -370,14 +350,36 @@
         ];
 
         function getRandomWinner() {
-            const index = Math.floor(Math.random() * realisticUsernames.length);
-            return realisticUsernames[index];
+            return realisticUsernames[Math.floor(Math.random() * realisticUsernames.length)];
         }
 
-        // ASSIGN UNIQUE INITIAL WINNERS PER CARD
-        document.querySelectorAll('.card-winner').forEach(el => {
-            el.innerText = getRandomWinner();
-        });
+        // LOAD OR GENERATE WINNERS THAT PERSIST UNTIL 12 AM
+        function loadDailyWinners() {
+            const today = new Date().toISOString().split('T')[0];
+            const savedDate = localStorage.getItem('giveaway_date');
+            
+            let winners = {};
+
+            if (savedDate === today && localStorage.getItem('giveaway_winners')) {
+                winners = JSON.parse(localStorage.getItem('giveaway_winners'));
+            } else {
+                winners = {
+                    'Roblox': getRandomWinner(),
+                    'GooglePlay': getRandomWinner(),
+                    'Steam': getRandomWinner(),
+                    'Apple': getRandomWinner()
+                };
+                localStorage.setItem('giveaway_date', today);
+                localStorage.setItem('giveaway_winners', JSON.stringify(winners));
+            }
+
+            document.getElementById('winner-Roblox').innerText = winners['Roblox'];
+            document.getElementById('winner-GooglePlay').innerText = winners['GooglePlay'];
+            document.getElementById('winner-Steam').innerText = winners['Steam'];
+            document.getElementById('winner-Apple').innerText = winners['Apple'];
+        }
+
+        loadDailyWinners();
 
         function updateCountdowns() {
             const now = new Date();
@@ -387,9 +389,8 @@
             const diff = midnight - now;
 
             if (diff <= 0) {
-                document.querySelectorAll('.card-winner').forEach(el => {
-                    el.innerText = getRandomWinner();
-                });
+                // MIDNIGHT REACHED: REFRESH WINNERS FOR NEW DAY
+                loadDailyWinners();
                 setTimeout(updateCountdowns, 1000);
                 return;
             }
