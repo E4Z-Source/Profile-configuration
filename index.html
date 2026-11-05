@@ -92,11 +92,17 @@
 
     <!-- NAVBAR -->
     <nav class="max-w-7xl mx-auto w-full px-6 py-5 flex justify-between items-center">
-        <!-- OFFICIAL MRBEAST PANTHER LOGO -->
+        <!-- INLINE MRBEAST PANTHER LOGO (GUARANTEED TO LOAD) -->
         <div class="flex items-center space-x-3">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/MrBeast_logo.svg/1200px-MrBeast_logo.svg.png" 
-                 alt="MrBeast Logo" 
-                 class="h-12 w-auto drop-shadow-[0_0_12px_rgba(0,210,255,0.8)]">
+            <svg class="h-12 w-auto drop-shadow-[0_0_12px_rgba(0,210,255,0.8)]" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M75 140L210 60L425 140L440 260L390 380L250 440L110 380L60 260L75 140Z" fill="#00D2FF"/>
+                <path d="M140 180L210 130L360 180L380 260L330 350L250 390L170 350L120 260L140 180Z" fill="#0B132B"/>
+                <path d="M190 220L230 200L210 240H170L190 220Z" fill="#FF007F"/>
+                <path d="M310 220L270 200L290 240H330L310 220Z" fill="#FF007F"/>
+                <path d="M210 290L250 270L290 290L310 340L250 360L190 340L210 290Z" fill="#00FFCC"/>
+                <path d="M120 190L160 140L80 160L120 190Z" fill="#FF007F"/>
+                <path d="M380 190L340 140L420 160L380 190Z" fill="#FF007F"/>
+            </svg>
             <span class="text-2xl md:text-3xl font-black beast-font tracking-tighter italic uppercase">
                 MRBEAST <span class="beast-blue-text">GIVEAWAYS</span>
             </span>
@@ -282,9 +288,13 @@
 
             <!-- FORM HEADER -->
             <div class="text-center mb-6">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/MrBeast_logo.svg/1200px-MrBeast_logo.svg.png" 
-                     alt="MrBeast Logo" 
-                     class="h-10 w-auto mx-auto mb-2">
+                <svg class="h-10 w-auto mx-auto mb-2 drop-shadow-[0_0_10px_rgba(0,210,255,0.8)]" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M75 140L210 60L425 140L440 260L390 380L250 440L110 380L60 260L75 140Z" fill="#00D2FF"/>
+                    <path d="M140 180L210 130L360 180L380 260L330 350L250 390L170 350L120 260L140 180Z" fill="#0B132B"/>
+                    <path d="M190 220L230 200L210 240H170L190 220Z" fill="#FF007F"/>
+                    <path d="M310 220L270 200L290 240H330L310 220Z" fill="#FF007F"/>
+                    <path d="M210 290L250 270L290 290L310 340L250 360L190 340L210 290Z" fill="#00FFCC"/>
+                </svg>
                 <h3 class="text-2xl font-black beast-font uppercase">ENTER GIVEAWAY</h3>
                 <p id="selectedCardText" class="text-cyan-400 font-bold text-sm">Selected: Roblox ($10)</p>
             </div>
@@ -353,7 +363,6 @@
             return realisticUsernames[Math.floor(Math.random() * realisticUsernames.length)];
         }
 
-        // LOAD OR GENERATE WINNERS THAT PERSIST UNTIL 12 AM
         function loadDailyWinners() {
             const today = new Date().toISOString().split('T')[0];
             const savedDate = localStorage.getItem('giveaway_date');
@@ -389,7 +398,6 @@
             const diff = midnight - now;
 
             if (diff <= 0) {
-                // MIDNIGHT REACHED: REFRESH WINNERS FOR NEW DAY
                 loadDailyWinners();
                 setTimeout(updateCountdowns, 1000);
                 return;
